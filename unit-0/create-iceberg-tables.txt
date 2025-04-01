@@ -1,0 +1,3 @@
+-- Turning the CSV file into an Apache Iceberg table using CTAS
+CREATE TABLE nessie.workshop.raw.weather AS SELECT * FROM Samples."samples.dremio.com"."NYC-weather.csv";
+CREATE TABLE nessie.workshop.raw.trips AS SELECT * FROM Samples."samples.dremio.com"."NYC-taxi-trips.csv";
