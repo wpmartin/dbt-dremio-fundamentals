@@ -99,6 +99,7 @@ Again click on the "Add Source" button to bring up the "Add Data Source" pop-up 
 The last step of our source data set-up is to create Iceberg tables from the Dremio Sample datasets. For this course we will be using two .csv files:
   - NYC-taxi-trips.csv
   - NYC-weather.csv
+  
 As these are .csv files before we can turn these into Iceberg tables we first need to format the files. This is the process of defining how we want the file to be formatted when read in as a table into Dremio. In the UI, click on the left-hand-side click on Samples under your Sources, then on the next page click on "samples.dremio.com". You will now be on a page showing a list of sample data files and directories, including the two files we want for our course. Move your cursor over one of the files and you will you see an icon of a file with an arrow appear on the far right of the row, over which the tooltip will display "Format File". Click on this to display the table settings pop-up. We will use all of the default values except for one; Please tick the box to "Extract Column Names" and then click Save.
 In the sample data list you should now notice that the icon for the file you formatted has changed from a grey file icon to a purple table icon. Now do the same process for the other required file.  
 
