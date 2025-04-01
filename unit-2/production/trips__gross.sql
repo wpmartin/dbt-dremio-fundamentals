@@ -5,4 +5,4 @@ SELECT
     trip_distance,
     total_amount
 FROM
-    nessie.workshop.staging.stg_trips__formatted
+    nessie.nyc.staging.stg_trips__formatted

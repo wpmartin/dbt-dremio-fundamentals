@@ -17,5 +17,5 @@ FROM   (SELECT station,
                CONVERT_TO_FLOAT(weather."snwd", 1, 1, 0) AS snow_depth,
                CONVERT_TO_FLOAT(weather."tempmax", 1, 1, 0) AS temp_max,
                CONVERT_TO_FLOAT(weather."tempmin", 1, 1, 0) AS temp_min
-        FROM   nessie.workshop.raw.weather AS weather
+        FROM   nessie.nyc.raw.weather AS weather
        ) nested_0;
