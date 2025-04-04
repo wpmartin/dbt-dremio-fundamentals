@@ -31,11 +31,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   nyc:
-    staging:
+    intermediate:
       +database: nessie
-      +schema: nyc.staging
+      +schema: nyc.intermediate
       +materialized: view
-    production:
+    marts:
       +database: nessie
-      +schema: nyc.production
+      +schema: nyc.marts
       +materialized: view

@@ -1,60 +1,20 @@
 # Setting up your environment
 
-For this course, we will be creating a data lakehouse on your laptop. We will be spinning up Minio as a local data lake, using Nessie as our data catalog, and connecting these as data sources to Dremio. This may sound complicated but is easily achieved using Docker. As such, make sure you have Docker installed, and if using Docker Desktop you may have to make sure you have at least 6GB of memory allocated to Docker. Open up your preferred IDE or text editor and create a docker-compose.yml in an empty folder with the following:
+For this course, we will be creating a data lakehouse on your laptop. We will be spinning up Minio as a local data lake, using Nessie as our data catalog, and connecting these as data sources to Dremio. This may sound complicated but is easily achieved using Docker. 
 
-```
-services:
-  # Nessie Catalog Server Using In-Memory Store
-  nessie:
-    image: projectnessie/nessie:latest
-    container_name: nessie
-    networks:
-      dremio-university:
-    ports:
-      - 19120:19120
-  # Minio Storage Server
-  minio:
-    image: minio/minio:latest
-    container_name: minio
-    environment:
-      - MINIO_ROOT_USER=admin
-      - MINIO_ROOT_PASSWORD=password
-      - MINIO_DOMAIN=storage
-      - MINIO_REGION_NAME=us-east-1
-      - MINIO_REGION=us-east-1
-    networks:
-      dremio-university:
-    ports:
-      - 9001:9001
-      - 9000:9000
-    command: ["server", "/data", "--console-address", ":9001"]
-  # Dremio
-  dremio:
-    platform: linux/x86_64
-    image: dremio/dremio-oss:latest
-    ports:
-      - 9047:9047
-      - 31010:31010
-      - 32010:32010
-    environment:
-      - DREMIO_JAVA_SERVER_EXTRA_OPTS=-Dpaths.dist=file:///opt/dremio/data/dist
-    container_name: dremio
-    networks:
-      dremio-university:
-networks:
-  dremio-university:
-```
+As such, make sure you have Docker installed, and if using Docker Desktop you may have to make sure you have at least 6GB of memory allocated to Docker. 
+
 ## Setting up a Minio Data Lake and Nessie Catalog
 
-First, let's spin up our Minio object storage-based data lake and create a bucket to store our Apache Iceberg tables, which Nessie will catalog. We can spin up these services with the command:
+First, let's spin up our Minio object storage-based data lake and create a bucket to store our Apache Iceberg tables, which Nessie will catalog. We can spin up these services using the provided docker-compose.yml and with the command:
 
 ```
 docker compose up -d minio nessie
 ```
 
-Now head over to localhost:9001 in your browser and log in to the Minio dashboard with the username "admin" and password "password."
+Now head over to `localhost:9001` in your browser and log in to the Minio dashboard with the username "admin" and password "password".
 
-Once you are logged in, create a bucket called "warehouse," and we have everything we need. Feel free to visit this dashboard after we make some Apache Iceberg tables to see the created files.
+Once you are logged in, create a bucket called `warehouse`, and we have everything we need. Feel free to visit this dashboard later on in this tutorial, after we make some Apache Iceberg tables, to see the created files.
 
 ## Starting Dremio
 
@@ -64,7 +24,7 @@ Next, it is time to start Dremio and get our data sources connected. Let's get D
 docker compose up -d dremio
 ```
 
-After a minute or two, Dremio should be up and running and we can visit it in the browser at localhost:9047 where we'll have to create our initial user account. You will need to provide:
+After a minute or two, Dremio should be up and running and we can visit it in the browser at `localhost:9047` where we will have to create our initial user account. You will need to provide:
   - First Name
   - Last Name
   - Username
@@ -101,11 +61,11 @@ Once you are inside Dremio, we can begin adding our data sources by clicking the
 Again click on the "Add Source" button to bring up the "Add Data Source" pop-up window. In this list, under "Object Storage" select the option "Sample Source" which is accompanied with Gnarly, the Dremio mascot.
 
 ## Creating Iceberg tables in Nessie
-The last step of our source data set-up is to create Iceberg tables from the Dremio Sample datasets. For this course we will be using two .csv files:
+The last step of our source data set-up is to create Iceberg tables from the Dremio Sample datasets. For this course we will be using the following .csv file:
   - NYC-taxi-trips.csv
-  - NYC-weather.csv
 
-As these are .csv files before we can turn these into Iceberg tables we first need to [format the data to a table](https://docs.dremio.com/current/sonar/data-sources/entity-promotion/). This is the process of defining how we want the file to be formatted when read in as a table into Dremio. 
+Before we can turn this .csv file into an Iceberg table we first need to [format the data to a table](https://docs.dremio.com/current/sonar/data-sources/entity-promotion/). This is the process of defining how we want the file to be formatted when read in as a table into Dremio. 
+
 
 In the Dremio UI, click on the left-hand-side click on Samples under your Sources, then on the next page click on "samples.dremio.com". You will now be on a page showing a list of sample data files and directories, including the two files we want for our course. Move your cursor over one of the files and you will you see an icon of a file with an arrow appear on the far right of the row, over which the tooltip will display "Format File". Click on this to display the table settings pop-up. We will use all of the default values except for one; Please tick the box to "Extract Column Names" and then click Save.
 
@@ -115,10 +75,10 @@ Now we have the two files formatted as tables we can turn these into Iceberg tab
 
 ```
 -- Turning the CSV file into an Apache Iceberg table using CTAS
-CREATE TABLE nessie.nyc.raw.weather AS SELECT * FROM Samples."samples.dremio.com"."NYC-weather.csv";
 CREATE TABLE nessie.nyc.raw.trips AS SELECT * FROM Samples."samples.dremio.com"."NYC-taxi-trips.csv";
 ```
-This code will create a main directory in Nessie called "nyc", and within that a sub-directory called "raw" into which it will write our two Iceberg tables, trips and weather. Click through into this directory to see them for yourself.
+
+This code will create a main directory in Nessie called "nyc", and within that a sub-directory called "raw" into which it will write our Iceberg table, trips. Click through into this directory to see for yourself.
 
 With that we have completed the process of setting up our Data Lakehouse and our source data.
 

@@ -1,7 +1,7 @@
 version: 2
 
 models:
-- name: stg_trips__formatted
+- name: int_trips__formatted
   description: "Contains data about NYC Taxi Trips."
   config:
       tags: ['cleaned', 'silver']

@@ -55,8 +55,8 @@ To configure a group of models, update the `dbt_project.yml` file under the `mod
 ```yaml
 models:
   nyc:
-    staging:
+    intermediate:
       +database: nessie
-      +schema: nyc.staging
+      +schema: nyc.intermediate
       +materialized: view
 ```

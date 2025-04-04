@@ -2,6 +2,6 @@
 select
     pickup_date,
     sum(fare_amount) as total_amount
-from {{ ref('stg_trips__formatted') }}
+from {{ ref('int_trips__formatted') }}
 group by pickup_date
 having total_amount < 0

@@ -1,4 +1,4 @@
-{% docs temperature %}
+{% docs nyc_temperature %}
 
 ## Data Documentation for Temperature
 
@@ -6,9 +6,9 @@ This production-level data product, `temperature__view`, details the recorded te
 
 | status        | description                                                                       |
 |---------------|-----------------------------------------------------------------------------------|
-| station       | The weather station unique identification code                                    |
-| date          | The date the temperature readings were recorded (YYY-MM-DD)                       |
-| temp_min      | The minimum observed temperature (fahrenheit)                                     |
-| temp_max      | The maximum observed temperature (fahrenheit)                                     |
+| station       | The weather station unique identification code.                                   |
+| date          | The date the temperature readings were recorded (YYYY-MM-DD).                     |
+| temp_min      | The minimum observed temperature (fahrenheit).                                    |
+| temp_max      | The maximum observed temperature (fahrenheit).                                    |
 
 {% enddocs %}
