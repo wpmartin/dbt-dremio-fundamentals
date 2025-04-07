@@ -43,3 +43,17 @@ You can also create documentation using markdown. This enables more elaborate fo
  - Under description provide a docs link to your doc block .md file.
  - Execute `dbt run`.
  - Review the doc block under "Wiki" in the Dremio UI.
+
+ ## Tags
+
+You can also add tags to your models. These are used as a semantic layer for users and as a resource selection to run/build/test models belonging to specific tags.
+
+- Edit the intermediate `_schema.yml`.
+- At the same level as "description" add a new property:
+
+```
+config:
+      tags: ['cleaned', 'silver']
+```
+
+- Execute `dbt run` and review in the Dremio UI in the dataset details sidepanel and overview page.
