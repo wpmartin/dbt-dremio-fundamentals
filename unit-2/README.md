@@ -1,6 +1,8 @@
 # Creating Data Models
 
-The data transformation process using dbt + Dremio involves writing transformation logic in dbt using SQL which is executed using Dremio’s SQL engine. These SQL queries are referred to as “models” and are saved as .sql files. In this unit we will create and execute some models, starting with a raw dataset and ending with a dataset intended for business use.
+The data transformation process using dbt + Dremio involves writing transformation logic in dbt using SQL which is executed using Dremio’s SQL engine. These SQL queries are referred to as **models** and are saved as .sql files. 
+
+In this unit we will create and execute some models, starting with a raw dataset and ending with a dataset intended for business use.
 
 ## Common dbt Commands and Their Purpose
 
@@ -50,15 +52,15 @@ Throughout this tutorial we will use a few select dbt commands. Below are detail
 
 ## Create sub-folders for the models
 
-Within your IDE nested underneath the `models` directory create the following two directories:
- - intermediate
- - marts
+Nested underneath the `models` directory create the following two directories:
+ - `intermediate`
+ - `marts`
 
 At this point I also recommend to delete the `example` directory. This was auto-created with your dbt project, but we will not be using it and do not want those models to be executed.
 
 ## Create an intermediate model
 
-- Create an .sql file called `int_trips__formatted` within the models.intermediate directory. 
+- Create an .sql file called `int_trips__formatted` within the `models.intermediate` directory. 
 - This will take the raw data from `nessie.nyc.raw.trips` and rename and reformat the attributes.
 - Use `dbt run` to create the view in Dremio.
 - Navigate to `nessie.nyc.intermediate` to view the created view.

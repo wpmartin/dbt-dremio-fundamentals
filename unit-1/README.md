@@ -1,6 +1,6 @@
 # Creating your dbt Project
 
-With all the packages ad libraries installed, now we can create a new dbt project using the command `dbt init`, this will be begin a series of questions to setup the global configurations of your project, these configurations are stored in `~/.dbt/profiles.yml`. You can setup more localized configurations in your project as we'll discuss shortly.
+With all the packages ad libraries installed, now we can create a new dbt project using the command `dbt init`, this will be begin a series of questions to setup the global configurations of your project, these configurations are stored in `~/.dbt/profiles.yml`.
 
 ### `dbt init` prompts
 
@@ -50,7 +50,12 @@ When working with dbt and Dremio, you can override the default configurations fo
 
 #### Configuring Defaults for a Group of Models in `dbt_project.yml`
 
-To configure a group of models, update the `dbt_project.yml` file under the `models` section. For example, if you want to store certain tables by default in `nessie.nyc.intermediate` you can specify the following configuration:
+To configure a group of models, update the `dbt_project.yml` file under the `models` section. Here you will want to add config settings for the following:
+- database: override the default database when dbt creates resources in your data platform.
+- schema: override the default schema dbt creates your models in.
+- materialized: how your model is persited in your database. 
+
+Open `dbt_project.yml` and edit the `models:nyc` section to as follows:
 
 ```yaml
 models:
@@ -59,4 +64,12 @@ models:
       +database: nessie
       +schema: nyc.intermediate
       +materialized: view
+    marts:
+      +database: nessie
+      +schema: nyc.marts
+      +materialized: view
 ```
+
+This will define custom config settings for two model layers, **intermediate** and **marts**, that we will be using for this tutorial. 
+
+With Dremio integration we define our models as either **table** or **view**, and our reflections (covered in unit 5) as **reflection**.

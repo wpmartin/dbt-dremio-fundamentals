@@ -9,10 +9,10 @@ In this unit we will review three documentation functions of dbt and how to inte
 
 ## Schema.yml
 
-The schema.yml file in dbt is a key component of your project that defines metadata, data tests, and documentation for your models (data tests will be covered in the next unit). It provides a centralized place to describe your data and enforce quality standards, making your dbt project easier to manage and understand.
+The `schema.yml` file in dbt is a key component of your project that defines metadata, data tests, and documentation for your models (data tests will be covered in the next unit). It provides a centralized place to describe your data and enforce quality standards, making your dbt project easier to manage and understand.
 
-- Within models.intermediate create the file `_schema.yml`.
-- Add a "models" property and provide the name and description for the `int_trips__formatted` model.
+- Within `models.intermediate` create the file `_schema.yml`.
+- Add a `models` property and provide the name and description for the `int_trips__formatted` model.
 - Within this add a "columns" property and provide a name and description for each of the columns.
 - Execute the command `dbt run`
 
@@ -29,27 +29,27 @@ models:
 Then execute `dbt run` to synch all existing documnetation with Dremio. 
 
 Navigate to the Dremio UI and look at the dataset details for `int_trips__formatted`.
-- The provided description will be visible under "Wiki", found in the dataset overview sidebar and under "Details" in the dataset details page.
-- The column descriptions are found under "Columns" under "Details" in the dataset details page. 
+- The provided description will be visible under **Wiki**, found in the dataset overview sidebar and under **Details** in the dataset details page.
+- The column descriptions are found under **Columns** under **Details** in the dataset details page. 
 
 ## Doc Blocks
 
-You can also create documentation using markdown. This enables more elaborate formatting and better readability.
+You can also create documentation using markdown. This enables more elaborate formatting for better readability.
 
- - Within models.marts create the file `nyc_taxi_gross_income.md`.
+ - Within `models.marts` create the file `nyc_taxi_gross_income.md`.
  - Describe the nyc_taxi_gross_income model and its attributes.
- - Within models.marts create a `_schema.yml` file.
- - Add a "models" property and provide the name as `nyc_taxi_gross_income.md`.
+ - Within `models.marts` create a `_schema.yml` file.
+ - Add a `models` property and provide the name as `nyc_taxi_gross_income.md`.
  - Under description provide a docs link to your doc block .md file.
  - Execute `dbt run`.
- - Review the doc block under "Wiki" in the Dremio UI.
+ - Review the doc block under **Wiki** in the Dremio UI.
 
  ## Tags
 
 You can also add tags to your models. These are used as a semantic layer for users and as a resource selection to run/build/test models belonging to specific tags.
 
 - Edit the intermediate `_schema.yml`.
-- At the same level as "description" add a new property:
+- At the same level as `description` add a new property:
 
 ```
 config:
