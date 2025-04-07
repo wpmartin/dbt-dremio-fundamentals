@@ -8,19 +8,32 @@ models:
   columns:
     - name: pickup_time
       description: "Time of pickup."
+      data_tests:
+        - not_null
     - name: pickup_date
       description: "Date of pickup."
+      data_tests:
+        - not_null
     - name: passenger_count
       description: "Number of passeengers for the taxi trip."
+      data_tests:
+        - not_null
     - name: trip_distance
       description: "Total distance covered by the trip (miles)."
+      data_tests:
+        - not_null
     - name: fare_amount
       description: "Cost of fare."
+      data_tests:
+        - not_null
     - name: tip_amount
       description: "Tip given."
+      data_tests:
+        - not_null
     - name: total_amount
       description: "Combined total of fare (rounded up to nearest whole dollar) and tip."
-
+      data_tests:
+        - not_null
 
 - name: int_weather__formatted
   description: "Contains data about the weather in NYC recorded by weather stations."
@@ -29,19 +42,33 @@ models:
   columns:
     - name: station
       description: "Weather station identifier."
+      data_tests:
+        - not_null
     - name: location_name
       description: "Location name."
+      data_tests:
+        - not_null
     - name: "date"
       description: "Date of recording."
     - name: average_wind
       description: "Average wind speed (units unknown)."
     - name: precipitation
       description: "Amount of rain."
+      data_tests:
+        - not_null
     - name: snow
       description: "Quantity of falling snow."
+      data_tests:
+        - not_null
     - name: snow_depth
       description: "Depth of snow on ground."
+      data_tests:
+        - not_null
     - name: temp_max
       description: "Maximum recorded temperature."
+      data_tests:
+        - not_null
     - name: temp_min
       description: "Minimum recorded temperature."
+      data_tests:
+        - not_null

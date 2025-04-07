@@ -1,4 +1,5 @@
 version: 2
+
 data_tests:
   - name: assert_total_daily_fare_is_positive
     description: >
