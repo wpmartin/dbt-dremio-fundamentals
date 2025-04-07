@@ -1,6 +1,6 @@
 # Setting up your environment
 
-For this course, we will be creating a data lakehouse on your laptop. We will be spinning up Minio as a local data lake, using Nessie as our data catalog, and connecting these as data sources to Dremio. This may sound complicated but is easily achieved using Docker. 
+For this tutorial, we will be creating a data lakehouse on your laptop. We will be spinning up Minio as a local data lake, using Nessie as our data catalog, and connecting these as data sources to Dremio. This may sound complicated but is easily achieved using Docker. 
 
 As such, make sure you have Docker installed, and if using Docker Desktop you may have to make sure you have at least 6GB of memory allocated to Docker. 
 
@@ -14,11 +14,11 @@ docker compose up -d minio nessie
 
 Now head over to `localhost:9001` in your browser and log in to the Minio dashboard with the username "admin" and password "password".
 
-Once you are logged in, create a bucket called `warehouse`, and we have everything we need. Feel free to visit this dashboard later on in this tutorial, after we make some Apache Iceberg tables, to see the created files.
+Once you are logged in, create a bucket called `warehouse`, and with that we have everything we need. Feel free to visit this dashboard later on in this tutorial, after we make some Apache Iceberg tables, to see the created files.
 
 ## Starting Dremio
 
-Next, it is time to start Dremio and get our data sources connected. Let's get Dremio started with the following command:
+Next, it is time to start Dremio and get it connected to our data sources. Let's get Dremio started with the following command:
 
 ```
 docker compose up -d dremio
@@ -58,7 +58,7 @@ Once you are inside Dremio, we can begin adding our data sources by clicking the
     ![alt text](image-76.webp)
 
 ### Add Sample Data
-Again click on the "Add Source" button to bring up the "Add Data Source" pop-up window. In this list, under "Object Storage" select the option "Sample Source" which is accompanied with Gnarly, the Dremio mascot.
+Click on the "Add Source" button to bring up the "Add Data Source" pop-up window. In this list, under "Object Storage" select the option "Sample Source" which is accompanied with Gnarly, the Dremio mascot.
 
 ## Creating Iceberg tables in Nessie
 The last step of our source data set-up is to create Iceberg tables from the Dremio Sample datasets. For this course we will be using the following .csv file:
@@ -66,19 +66,16 @@ The last step of our source data set-up is to create Iceberg tables from the Dre
 
 Before we can turn this .csv file into an Iceberg table we first need to [format the data to a table](https://docs.dremio.com/current/sonar/data-sources/entity-promotion/). This is the process of defining how we want the file to be formatted when read in as a table into Dremio. 
 
+In the table settings pop-up we will use all the default setting, except for one; Please tick the box to "Extract Column Names" and click Save. In the sample data list the icon for the file you have formatted should now have changed from a grey file icon to a purple table icon.
 
-In the Dremio UI, click on the left-hand-side click on Samples under your Sources, then on the next page click on "samples.dremio.com". You will now be on a page showing a list of sample data files and directories, including the two files we want for our course. Move your cursor over one of the files and you will you see an icon of a file with an arrow appear on the far right of the row, over which the tooltip will display "Format File". Click on this to display the table settings pop-up. We will use all of the default values except for one; Please tick the box to "Extract Column Names" and then click Save.
-
-In the sample data list you should now notice that the icon for the file you formatted has changed from a grey file icon to a purple table icon. Now do the same process for the other required file.  
-
-Now we have the two files formatted as tables we can turn these into Iceberg tables in Nessie. Go to the SQL editor and run the following two SQL statements:
+Finally we will now use this table to generate an Iceberg table in Nessie. Go to the SQL editor and run the following SQL statement:
 
 ```
 -- Turning the CSV file into an Apache Iceberg table using CTAS
 CREATE TABLE nessie.nyc.raw.trips AS SELECT * FROM Samples."samples.dremio.com"."NYC-taxi-trips.csv";
 ```
 
-This code will create a main directory in Nessie called "nyc", and within that a sub-directory called "raw" into which it will write our Iceberg table, trips. Click through into this directory to see for yourself.
+This code will create a main directory in Nessie called `nyc`, and within that a sub-directory called `raw` into which it will write our Iceberg table, `trips`. Click through into this directory in the Dremio UI to see for yourself.
 
 With that we have completed the process of setting up our Data Lakehouse and our source data.
 

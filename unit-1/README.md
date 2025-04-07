@@ -24,20 +24,20 @@ With all the packages ad libraries installed, now we can create a new dbt projec
 - `object_storage_source`: must be a Dremio source where tables can be written (S3, GCP, HDFS, AWS Glue, Polaris, Nessie).
 - `object_storage_path`: the sub path for your object_storage_source
 
-These two settings establish where physical tables are created by default, in our case we want to create tables by default in `nessie.worksop.preparation` so the values will be:
+These two settings establish where physical tables are created by default, in our case we want to create tables by default in `nessie.nyc.raw` so the values will be:
 
 - `object_storage_source`: `nessie`
-- `object_storage_path`: `nyc.staging`
+- `object_storage_path`: `nyc.raw`
 
 ###### Creating Views Location
 
 - `dremio_space`: This can be any Dremio Source that can track views (Spaces, Arctic Catalog, Nessie, Dremio Catalog).
 - `dremio_space_folder`: This the sub path for the dremio_space
 
-We want to be using Nessie and the `staging` directory, so our values will be:
+We want to be using Nessie and the `raw` directory, so our values will be:
 
 - `dremio_space`: `nessie`
-- `dremio_space_folder`: `nyc.staging`
+- `dremio_space_folder`: `nyc.raw`
 
 #### 13 Thread
 
@@ -50,7 +50,7 @@ When working with dbt and Dremio, you can override the default configurations fo
 
 #### Configuring Defaults for a Group of Models in `dbt_project.yml`
 
-To configure a group of models, update the `dbt_project.yml` file under the `models` section. For example, if you want to store certain tables by default in `nessie.nyc.taging` you can specify the following configuration:
+To configure a group of models, update the `dbt_project.yml` file under the `models` section. For example, if you want to store certain tables by default in `nessie.nyc.intermediate` you can specify the following configuration:
 
 ```yaml
 models:
