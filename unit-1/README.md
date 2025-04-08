@@ -1,23 +1,22 @@
 # Creating your dbt Project
 
-With all the packages ad libraries installed, now we can create a new dbt project using the command `dbt init`, this will be begin a series of questions to setup the global configurations of your project, these configurations are stored in `~/.dbt/profiles.yml`.
+With all the packages ad libraries installed, now we can create a new dbt project using the command `dbt init nyc`, this will be begin a series of questions to setup the global configurations of a project called `nyc`, whose configurations are stored in `~/.dbt/profiles.yml`.
 
 ### `dbt init` prompts
 
 #### Basics
-1. *name of your project*: enter whatever name you like
-2. *number of type of project*: enter the number for `dremio` (may not be 1 if you have other dbt libraries installed)
-3. *type of dremio project*: For this exercise choose `2` (The Following questions will differ depending on what you select for this option)
+1. *number of type of project*: enter the number for `dremio` (may not be 1 if you have other dbt libraries installed)
+2. *type of dremio project*: For this exercise choose `2` (The Following questions will differ depending on what you select for this option)
     - [2] software_with_username_password (if you are self-deploying Dremio like using Docker and want to authenticate using Username/Password)
 
 #### Connection Settings and Authentication
-4. *software host*: The host part of the url for your Dremio instance, as you are running on your laptop this would be `localhost` or `127.0.0.1`
-5. *port*: The port Dremio is running on within the host, which should typically be port `9047`
-6. *username*: Your Dremio Username
-7. *password*: Your Dremio Password
-8. *use_ssl*: Whether to use a SSL connection. Choose False as we are working locally
+3. **software host**: The host part of the url for your Dremio instance, as you are running on your laptop this would be `localhost` or `127.0.0.1`
+4. **port**: The port Dremio is running on within the host, which should typically be port `9047`
+5. **username**: Your Dremio Username
+6. **password**: Your Dremio Password
+7. **use_ssl**: Whether to use a SSL connection. Choose False as we are working locally
 
-#### 9-12: Default View and Table Storage Location
+#### 8-11: Default View and Table Storage Location
 
 ###### Materializing Tables Location
 
@@ -26,8 +25,8 @@ With all the packages ad libraries installed, now we can create a new dbt projec
 
 These two settings establish where physical tables are created by default, in our case we want to create tables by default in `nessie.nyc.raw` so the values will be:
 
-- `object_storage_source`: `nessie`
-- `object_storage_path`: `nyc.raw`
+8. `object_storage_source`: `nessie`
+9. `object_storage_path`: `nyc.raw`
 
 ###### Creating Views Location
 
@@ -36,12 +35,12 @@ These two settings establish where physical tables are created by default, in ou
 
 We want to be using Nessie and the `raw` directory, so our values will be:
 
-- `dremio_space`: `nessie`
-- `dremio_space_folder`: `nyc.raw`
+10. `dremio_space`: `nessie`
+11. `dremio_space_folder`: `nyc.raw`
 
-#### 13 Thread
+#### 13: Thread
 
-Just select the default `1` thread unless you want to use more threads.
+Select the default `1`.
 
 
 ## Customizing Configurations in dbt with Dremio
