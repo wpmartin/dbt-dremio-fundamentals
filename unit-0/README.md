@@ -58,26 +58,7 @@ Once you are inside Dremio, we can begin adding our data sources by clicking the
     ![alt text](image-76.webp)
 
 ### Add Sample Data
-Click on the "Add Source" button to bring up the "Add Data Source" pop-up window. In this list, under "Object Storage" select the option "Sample Source" which is accompanied with Gnarly, the Dremio mascot.
-
-## Creating Iceberg tables in Nessie
-The last step of our source data set-up is to create Iceberg tables from the Dremio Sample datasets. For this course we will be using the following .csv file:
-  - NYC-taxi-trips.csv
-
-Before we can turn this .csv file into an Iceberg table we first need to [format the data to a table](https://docs.dremio.com/current/sonar/data-sources/entity-promotion/). This is the process of defining how we want the file to be formatted when read in as a table into Dremio. 
-
-In the table settings pop-up we will use all the default setting, except for one; Please tick the box to "Extract Column Names" and click Save. In the sample data list the icon for the file you have formatted should now have changed from a grey file icon to a purple table icon.
-
-Finally we will now use this table to generate an Iceberg table in Nessie. Go to the SQL editor and run the following SQL statement:
-
-```
--- Turning the CSV file into an Apache Iceberg table using CTAS
-CREATE TABLE nessie.nyc.raw.trips AS SELECT * FROM Samples."samples.dremio.com"."NYC-taxi-trips.csv";
-```
-
-This code will create a main directory in Nessie called `nyc`, and within that a sub-directory called `raw` into which it will write our Iceberg table, `trips`. Click through into this directory in the Dremio UI to see for yourself.
-
-With that we have completed the process of setting up our Data Lakehouse and our source data.
+Click on the "Add Source" button to bring up the "Add Data Source" pop-up window. In this list, under "Object Storage" select the option "Sample Source" which has Gnarly, the Dremio mascot, as its icon.
 
 ## Creating a Python Virtual Environment and Installing dbt
 

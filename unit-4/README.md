@@ -28,8 +28,8 @@ dbt provides four generic data tests out-of-the-box for common tests:
 
 ## Singular tests
 
-- At the same level as the models directory add a `tests` directory.
-- Create a data test "assert_has_passengers.sql" that references your intermediate model.
+- At the same level as the `models` directory is a `tests` directory.
+- Within this create a data test `assert_has_passengers.sql` that references your intermediate model.
 - Within the tests directory create a `_schema.yml` file to document your test.
 - In the schema provide a name and description for each data test.
 - Run test using `dbt test`.

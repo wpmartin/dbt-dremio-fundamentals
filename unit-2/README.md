@@ -36,18 +36,28 @@ Throughout this tutorial we will use a few select dbt commands. Below are detail
     dbt test
     ```
 
-4. **`dbt list`**
-
-- **Purpose**: Lists the resources (models, tests, seeds, etc.) in your project.
-- **Use Case**: Use this to get a quick overview of the components in your dbt project.
-
-    ```
-    dbt list
-    ```
-
 #### Tips for Using dbt Commands
 
 - Commands like `dbt run`, `dbt test`, and `dbt build` can be scoped to specific models or directories by using selectors (e.g., `dbt run --select <model_name>`).
+
+
+## Create a raw source dataset in Dremio
+
+To data used to create your models will be an Iceberg table stored in nessie. You will be using the dataset `NYC-taxi-trips.csv` found in the Samples object storage. 
+
+- Click through to `Samples."samples.dremio.com"`. 
+- Hover over the file and click on the icon on the far right to [format the data to a table](https://docs.dremio.com/current/sonar/data-sources/entity-promotion/).
+- Tick the box to `Extract Column Names` and click Save.
+- In the sample data list the icon for this file will have changed from a grey file to a purple table.
+
+Now that the dataaset is a table you generate an Iceberg table in Nessie. Go to the SQL editor and run the following SQL statement:
+
+```
+-- Turning the CSV file into an Apache Iceberg table using CTAS
+CREATE TABLE nessie.nyc.raw.trips AS SELECT * FROM Samples."samples.dremio.com"."NYC-taxi-trips.csv";
+```
+
+This code will create a main directory in Nessie called `nyc` for your project, and within that a sub-directory one called `raw` into which it wrote an Iceberg table, `trips`. Click through into this directory in the Dremio UI to see for yourself.
 
 
 ## Create sub-folders for the models
