@@ -24,13 +24,11 @@ To enable this feature add the following property to your dbt_project.yml:
 models:
   +persist_docs:
     relation: true
-    columns: true
 ```
 Then execute `dbt run` to synch all existing documnetation with Dremio. 
 
-Navigate to the Dremio UI and look at the dataset details for `int_trips__formatted`.
-- The provided description will be visible under **Wiki**, found in the dataset overview sidebar and under **Details** in the dataset details page.
-- The column descriptions are found under **Columns** under **Details** in the dataset details page. 
+- Navigate to the Dremio UI and look at the dataset details for `int_trips__formatted`.
+- The dataset description will be visible under **Wiki**, found in the dataset overview sidebar and under **Details** in the dataset details page.
 
 ## Doc Blocks
 

@@ -39,7 +39,6 @@ models:
       +tags: silver
       +persist_docs:
         relation: true
-        columns: true
     marts:
       +database: nessie
       +schema: nyc.marts
