@@ -7,5 +7,5 @@ data_tests:
       Return records where daily fare_amount < 0 to make the test fail.
   - name: assert_has_passengers
     description: >
-      The taxi must have passeengers to pay the fare.
+      The taxi must have passengers to pay the fare.
       Return records where passenger_count < 0 to make the test fail.

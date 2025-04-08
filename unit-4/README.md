@@ -25,6 +25,7 @@ dbt provides four generic data tests out-of-the-box for common tests:
       data_tests:
         - not_null
 ```
+- Run tests using `dbt test`.
 
 ## Singular tests
 
@@ -32,6 +33,6 @@ dbt provides four generic data tests out-of-the-box for common tests:
 - Within this create a data test `assert_has_passengers.sql` that references your intermediate model.
 - Within the tests directory create a `_schema.yml` file to document your test.
 - In the schema provide a name and description for each data test.
-- Run test using `dbt test`.
+- Run the singular test using `dbt test --select assert_has_passengers`.
 
 **NOTE**: Don't reference singular tests in `<model_name>.yml`, as they are not treated as generic tests or macros, and doing so will result in an error.
