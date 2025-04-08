@@ -20,28 +20,3 @@ models:
       description: "Tip given."
     - name: total_amount
       description: "Combined total of fare (rounded up to nearest whole dollar) and tip."
-
-
-- name: int_weather__formatted
-  description: "Contains data about the weather in NYC recorded by weather stations."
-  config:
-      tags: ['cleaned', 'silver']
-  columns:
-    - name: station
-      description: "Weather station identifier."
-    - name: location_name
-      description: "Location name."
-    - name: "date"
-      description: "Date of recording."
-    - name: average_wind
-      description: "Average wind speed (units unknown)."
-    - name: precipitation
-      description: "Amount of rain."
-    - name: snow
-      description: "Quantity of falling snow."
-    - name: snow_depth
-      description: "Depth of snow on ground."
-    - name: temp_max
-      description: "Maximum recorded temperature."
-    - name: temp_min
-      description: "Minimum recorded temperature."

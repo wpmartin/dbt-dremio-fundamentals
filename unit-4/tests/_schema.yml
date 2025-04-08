@@ -1,10 +1,6 @@
 version: 2
 
 data_tests:
-  - name: assert_total_daily_fare_is_positive
-    description: >
-      Cabbies can give refunds but we want to be making a profit each day.
-      Return records where daily fare_amount < 0 to make the test fail.
   - name: assert_has_passengers
     description: >
       The taxi must have passengers to pay the fare.

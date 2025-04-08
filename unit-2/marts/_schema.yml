@@ -1,7 +1,5 @@
 version: 2
 
 models:
-- name: nyc_temperature
-  description: '{{ doc("nyc_temperature") }}'
 - name: nyc_taxi_gross_income
   description: '{{ doc("nyc_taxi_gross_income") }}'

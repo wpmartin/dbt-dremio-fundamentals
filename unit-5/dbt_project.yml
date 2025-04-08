@@ -43,6 +43,5 @@ models:
       +materialized: view
       +tags: ['gold']
 
-
 vars:
   dremio:reflections_metadata_enabled: true
