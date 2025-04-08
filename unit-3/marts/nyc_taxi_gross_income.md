@@ -1,8 +1,8 @@
 {% docs nyc_taxi_gross_income %}
 
-## Data Documentation for Temperature
+## Data Documentation for NYC Taxi Gross Income
 
-This production-level data product, `temperature__view`, details the recorded temperature in [New York City](https://en.wikipedia.org/wiki/New_York_City) on the time-scale of days:
+This production-level data product, `nyc_taxi_gross_income`, details taxi rides in [New York City](https://en.wikipedia.org/wiki/New_York_City) providing the total money earned and other key information.
 
 | status           | description                                                                   |
 |------------------|-------------------------------------------------------------------------------|
