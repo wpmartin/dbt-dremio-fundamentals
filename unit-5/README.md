@@ -19,3 +19,5 @@ You create reflections as a model .sql file in dbt. However, unlike a typical mo
 - Create a raw reflection for your intermediate model `int_trips__raw_reflection.sql`.
 - Create an aggregate reflection for your intermediate model `int_trips__agg_reflection.sql`
 - Execute `dbt run` and view the Reflections in the Dremio UI in the dataset details page for `int_trips__formatted`.
+
+As a final step to cap off the tutorial use `dbt build` to run all the tests and models.
