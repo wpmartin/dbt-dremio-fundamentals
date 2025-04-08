@@ -1,6 +1,6 @@
 # Creating Data Models
 
-The data transformation process using dbt + Dremio involves writing transformation logic in dbt using SQL which is executed using Dremio’s SQL engine. These SQL queries are referred to as **models** and are saved as .sql files. 
+The data transformation process using dbt + Dremio involves writing transformation logic in dbt using SQL which is executed using Dremio’s SQL engine. These SQL queries are referred to as **"models"** and are saved as .sql files. 
 
 In this unit we will create and execute some models, starting with a raw dataset and ending with a dataset intended for business use.
 
@@ -14,27 +14,15 @@ Throughout this tutorial we will use a few select dbt commands. Below are detail
    - **Purpose**: Executes all the models defined in your project by running the SQL files and materializing the results (tables, views, or incremental models) according to the configurations.
    - **Use Case**: Use this command to build or refresh your data models in the target database.
 
-   ```bash
-   dbt run
-   ```
-
 2. **`dbt build`**
 
 - **Purpose**: Combines multiple actions—compiling, running, testing, and building documentation—all in one command.
 - **Use Case**: Use this for an end-to-end execution of models, ensuring they run, pass tests, and have documentation updated.
-    
-    ```
-    dbt build
-    ```
 
 3. **`dbt test`**
 
 - **Purpose**: Runs the tests defined in your tests directory or within your models to validate data quality and integrity.
 - **Use Case**: Use this command to check that your data meets the defined constraints (e.g., unique values, no nulls).
-
-    ```
-    dbt test
-    ```
 
 #### Tips for Using dbt Commands
 
@@ -47,7 +35,7 @@ To data used to create your models will be an Iceberg table stored in nessie. Yo
 
 - Click through to `Samples."samples.dremio.com"`. 
 - Hover over the file and click on the icon on the far right to [format the data to a table](https://docs.dremio.com/current/sonar/data-sources/entity-promotion/).
-- Tick the box to `Extract Column Names` and click Save.
+- In the Table Settings window, tick the box to `Extract Column Names` and click Save.
 - In the sample data list the icon for this file will have changed from a grey file to a purple table.
 
 Now that the dataaset is a table you generate an Iceberg table in Nessie. Go to the SQL editor and run the following SQL statement:
@@ -61,6 +49,8 @@ This code will create a main directory in Nessie called `nyc` for your project, 
 
 
 ## Create sub-folders for the models
+
+Return to your IDE and we will continue working with dbt.
 
 Nested underneath the `models` directory create the following two directories:
  - `intermediate`
@@ -78,7 +68,8 @@ At this point I also recommend to delete the `example` directory. This was auto-
 
 ## Create a marts model
 
-- Create an .sql file called `nyc_taxi_gross_income` within the models.marts directory. 
-- This will use the intermediate view `int_trips__formatted` and drop unwanted coloumns.
+- Create an .sql file called `nyc_taxi_gross_income` within the `models.marts` directory. 
+- This will use the intermediate view `int_trips__formatted` as a source and drop unwanted coloumns.
+- Rather than pull data from Dremio this model uses the `ref()` function to [reference](https://docs.getdbt.com/reference/dbt-jinja-functions/ref) the intermediate model. 
 - Use `dbt run` to create the view in Dremio.
 - Navigate to `nessie.nyc.marts` to view the created view.

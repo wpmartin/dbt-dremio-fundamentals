@@ -30,20 +30,18 @@ clean-targets:         # directories to be removed by `dbt clean`
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
 models:
+  +persist_docs:
+    relation: true
   nyc:
-    # Config indicated by + and applies to all files under models/example/
     intermediate:
       +database: nessie
       +schema: nyc.intermediate
       +materialized: view
-      +tags: silver
-      +persist_docs:
-        relation: true
     marts:
       +database: nessie
       +schema: nyc.marts
       +materialized: view
-      +tags: gold
+      +tags: ['gold']
 
 
 vars:

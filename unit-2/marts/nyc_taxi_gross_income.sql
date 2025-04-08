@@ -5,4 +5,4 @@ SELECT
     trip_distance,
     total_amount
 FROM
-    nessie.nyc.intermediate.int_trips__formatted
+    {{ ref('int_trips__formatted') }}

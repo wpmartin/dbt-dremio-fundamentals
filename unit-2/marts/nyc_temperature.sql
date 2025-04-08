@@ -4,4 +4,4 @@ SELECT
     temp_max,
     temp_min
 FROM
-    {{ ref('int_weather__formatted') }}
+    nessie.nyc.intermediate.int_weather__formatted
