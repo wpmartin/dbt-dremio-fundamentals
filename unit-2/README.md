@@ -6,7 +6,7 @@ In this unit we will create and execute some models, starting with a raw dataset
 
 ## A Reference Guide of Common dbt Commands
 
-Throughout this tutorial we will use a few select dbt commands. Below are details on them to help familiarise you. **Before running any dbt command, ensure that your terminal is navigated to the folder containing your `dbt_project.yml` file.** This ensures dbt has access to the project configuration and can execute the commands successfully.
+Throughout this tutorial we will use a few select dbt commands. Below are details on them to help familiarise you. **When running any dbt command, ensure that your terminal is navigated to the folder containing your `dbt_project.yml` file.** This ensures dbt has access to the project configuration and can execute the commands successfully.
 
 #### **Core dbt Commands**
 
@@ -31,7 +31,7 @@ Throughout this tutorial we will use a few select dbt commands. Below are detail
 
 ## Create a raw source dataset in Dremio
 
-To data used to create your models will be an Iceberg table stored in nessie. You will be using the dataset `NYC-taxi-trips.csv` found in the Samples object storage. 
+The data used to create your models will be an Iceberg table stored in nessie. To create this you will be using the dataset `NYC-taxi-trips.csv` found in the Samples object storage. 
 
 - Click through to `Samples."samples.dremio.com"`. 
 - Hover over the file and click on the icon on the far right to [format the data to a table](https://docs.dremio.com/current/sonar/data-sources/entity-promotion/).
