@@ -19,9 +19,13 @@ models:
 ```
 Now whenever you execute `dbt run` all existing, compatible documentation for all models will now synch with Dremio. 
 
+**NOTE**: At time of writing, the Dremio adaptor does not support column descriptions.
+
 ## Schema.yml
 
-The `schema.yml` file in dbt is a key component of your project that defines metadata, data tests, and documentation for your models (data tests will be covered in the next unit). It provides a centralized place to describe your data and enforce quality standards, making your dbt project easier to manage and understand. In this excercise we will be creating a schema.yml file and using it to write a [description](https://docs.getdbt.com/reference/resource-properties/description) for our intermediate model. 
+The `schema.yml` file in dbt is a key component of your project that defines metadata, data tests, and documentation for your models (data tests will be covered in the next unit). It provides a centralized place to describe your data and enforce quality standards, making your dbt project easier to manage and understand. 
+
+In this excercise you will be creating a schema.yml file and using it to write a [description](https://docs.getdbt.com/reference/resource-properties/description) for the intermediate model. 
 
 - Within `models.intermediate` create the file `_schema.yml`.
 - Add a `models` property and provide the name and description for the `int_trips__formatted` model.

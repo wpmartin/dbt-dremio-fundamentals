@@ -8,7 +8,6 @@ Unified Analytics with Dremio unlocks the ability to streamline your data workfl
 This course will introduce you to the basics of using dbt and Dremio together. You will learn how to create and define your resources, and some best practices for executing. During these sessions you will learn about:
   - Creating and configuring dbt projects
   - Understanding and creating Data Sources and Models
-  - Materializing data as Views and Tables
-  - Creating documentation and tests within dbt
+  - Creating documentation and data tests within dbt
   - Synching documentation with Dremio
-  - Creating Dremio Reflections within dbt
+  - Creating Dremio Reflections with dbt
