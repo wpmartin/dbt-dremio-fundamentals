@@ -23,4 +23,5 @@ You create reflections as a model .sql file in dbt. However, unlike a typical mo
 - Execute `dbt run` and view the Reflections in the Dremio UI in the dataset details page for `int_trips__formatted`.
 
 ## Victory Lap
+
 As a final step to cap off the tutorial use `dbt build` to run all the tests and models.
