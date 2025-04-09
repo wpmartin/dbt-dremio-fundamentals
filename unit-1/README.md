@@ -1,6 +1,6 @@
 # Creating your dbt Project
 
-With all the packages ad libraries installed, now we can create a new dbt project using the command `dbt init nyc`, this will be begin a series of questions to setup the global configurations of a project called `nyc`, whose configurations are stored in `~/.dbt/profiles.yml`.
+With all the packages and libraries installed, now we can create a new dbt project using the command `dbt init nyc`, this will be begin a series of questions to setup the global configurations of a project called `nyc`, whose configurations are stored in `~/.dbt/profiles.yml`.
 
 ### `dbt init` prompts
 
@@ -14,7 +14,7 @@ With all the packages ad libraries installed, now we can create a new dbt projec
 4. **port**: The port Dremio is running on within the host, which should typically be port `9047`
 5. **username**: Your Dremio Username
 6. **password**: Your Dremio Password
-7. **use_ssl**: Whether to use a SSL connection. Choose False as we are working locally
+7. **use_ssl**: Whether to use a SSL connection. Choose `False` as we are working locally
 
 #### 8-11: Default View and Table Storage Location
 
@@ -25,8 +25,8 @@ With all the packages ad libraries installed, now we can create a new dbt projec
 
 These two settings establish where physical tables are created by default, in our case we want to create tables by default in `nessie.nyc.raw` so the values will be:
 
-8. `object_storage_source`: `nessie`
-9. `object_storage_path`: `nyc.raw`
+8. **object_storage_source**: `nessie`
+9. **object_storage_path**: `nyc.raw`
 
 ###### Creating Views Location
 
@@ -35,8 +35,8 @@ These two settings establish where physical tables are created by default, in ou
 
 We want to be using Nessie and the `raw` directory, so our values will be:
 
-10. `dremio_space`: `nessie`
-11. `dremio_space_folder`: `nyc.raw`
+10. **dremio_space**: `nessie`
+11. **dremio_space_folder**: `nyc.raw`
 
 #### 13: Thread
 

@@ -6,7 +6,7 @@ As such, make sure you have Docker installed, and if using Docker Desktop you ma
 
 ## Setting up a Minio Data Lake and Nessie Catalog
 
-First, let's spin up our Minio object storage-based data lake and create a bucket to store our Apache Iceberg tables, which Nessie will catalog. We can spin up these services using the provided docker-compose.yml and with the command:
+First, let's spin up our Minio object storage-based data lake and create a bucket to store our Apache Iceberg tables, which Nessie will catalog. We can spin up these services using the provided `docker-compose.yml` and with the command:
 
 ```
 docker compose up -d minio nessie
@@ -62,7 +62,7 @@ Click on the "Add Source" button to bring up the "Add Data Source" pop-up window
 
 ## Creating a Python Virtual Environment and Installing dbt
 
-Dremio has it's own dbt connector, called dbt-dremio, which we use to connect Dremio to dbt Core (connection to dbt Cloud is not yet available). This package requires Python 3.9.x or later to be installed. If you do not have Python or the required version please install or update that now. You should always isolate your python dependencies by creating a virtual environment for each project.
+Dremio has its own dbt connector, called dbt-dremio, which we use to connect Dremio to dbt Core (connection to dbt Cloud not available at the time of writing). This package requires Python 3.9.x or later to be installed. If you do not have Python or the required version please install or update that now. You should always isolate your python dependencies by creating a virtual environment for each project.
 
 Command to create the environment for this course:
 

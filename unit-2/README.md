@@ -4,7 +4,7 @@ The data transformation process using dbt + Dremio involves writing transformati
 
 In this unit we will create and execute some models, starting with a raw dataset and ending with a dataset intended for business use.
 
-## Common dbt Commands and Their Purpose
+## A Reference Guide of Common dbt Commands
 
 Throughout this tutorial we will use a few select dbt commands. Below are details on them to help familiarise you. **Before running any dbt command, ensure that your terminal is navigated to the folder containing your `dbt_project.yml` file.** This ensures dbt has access to the project configuration and can execute the commands successfully.
 
@@ -60,15 +60,15 @@ At this point I also recommend to delete the `example` directory. This was auto-
 
 ## Create an intermediate model
 
-- Create an .sql file called `int_trips__formatted` within the `models.intermediate` directory. 
+- Create an .sql file called `int_trips__formatted.sql` within the `models.intermediate` directory. 
 - This will take the raw data from `nessie.nyc.raw.trips` and rename and reformat the attributes.
-- Use `dbt run` to create the view in Dremio.
-- Navigate to `nessie.nyc.intermediate` to view the created view.
-- Compare the view with the source file in `nessie.nyc.raw`.
+- Use the command `dbt run` to create the view in Dremio.
+- Navigate to `nessie.nyc.intermediate` in the Dremio UI to view the created view.
+- Use the Dremio UI to compare this view with the raw table in `nessie.nyc.raw`.
 
 ## Create a marts model
 
-- Create an .sql file called `nyc_taxi_gross_income` within the `models.marts` directory. 
+- Create an .sql file called `nyc_taxi_gross_income.sql` within the `models.marts` directory. 
 - This will use the intermediate view `int_trips__formatted` as a source and drop unwanted coloumns.
 - Rather than pull data from Dremio this model uses the `ref()` function to [reference](https://docs.getdbt.com/reference/dbt-jinja-functions/ref) the intermediate model. 
 - Use `dbt run` to create the view in Dremio.
