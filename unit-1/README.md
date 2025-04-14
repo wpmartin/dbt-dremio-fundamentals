@@ -43,11 +43,11 @@ We want to be using Nessie and the `raw` directory, so our values will be:
 Select the default `1`.
 
 
-## Customizing Configurations in dbt with Dremio
+## Customizing Configurations in dbt With Dremio
 
 When working with dbt and Dremio, you can override the default configurations for materialized tables and views at both the project level using the `dbt_project.yml` file and the model level using the `config` function within your model file. This flexibility allows you to tailor the storage locations for your tables and views based on your specific needs.
 
-#### Configuring Defaults for a Group of Models in `dbt_project.yml`
+#### Configuring Defaults for a Group of Models
 
 To configure a group of models, update the `dbt_project.yml` file under the `models` section. Here you will want to add config settings for the following:
 - database: override the default database when dbt creates resources in your data platform.
@@ -72,3 +72,25 @@ models:
 This will define custom config settings for two model layers, **intermediate** and **marts**, that we will be using for this tutorial. 
 
 With Dremio integration we define our models as either **table** or **view**, and our reflections (covered in unit 5) as **reflection**.
+
+
+### Configuring Settings for an Individual Model
+
+To set custom configurations settings for a specific model you can use the `config()` function within the model file. This will override the model-group configuration specificied in the `dbt_project.yml` file.
+
+To override the materialization method to `table` put the following at the top of a model file, above the SELECT statement:
+
+```
+{{ config(materialized='table') }}
+```
+
+Likewise you can also overide the Dremio configuration options you selected when creating your dbt project, such as the `object_storage_source`. Just as with the materialized config, you specify these custom settings with the `config()` function at the top of the model file, e.g.:
+
+```
+{{ config(
+    object_storage_source='nessie',
+    object_storage_path='nyc.silver',
+    dremio_space='default',
+    dremio_space_folder='custom_views'
+) }}
+```
