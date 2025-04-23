@@ -46,7 +46,7 @@ Once you are inside Dremio, we can begin adding our data sources by clicking the
 
 ## Creating a Python Virtual Environment and Installing dbt
 
-Dremio has its own dbt connector, called dbt-dremio, which we use to connect Dremio to dbt Core (connection to dbt Cloud not available at the time of writing). This package requires Python 3.9.x or later to be installed. If you do not have Python or the required version please install or update that now. You should always isolate your python dependencies by creating a virtual environment for each project.
+Dremio has its own dbt connector, called `dbt-dremio`, which we use to connect Dremio to dbt Core (connection to dbt Cloud not available at the time of writing). This package requires Python 3.9.x or later to be installed. If you do not have Python or the required version please install or update that now. You should always isolate your python dependencies by creating a virtual environment for each project.
 
 Command to create the environment for this course:
 
