@@ -31,11 +31,14 @@ Throughout this tutorial we will use a few select dbt commands. Below are detail
 
 ## Create a raw source dataset in Dremio
 
-The data used to create your models will be an Iceberg table stored in nessie. To create this you will be using the dataset `NYC-taxi-trips.csv` found in the Samples object storage. 
+The data used to create your models will be an Iceberg table stored in nessie. To create this you will be using the sample dataset `NYC-taxi-trips.csv` provided in Dremio. 
+
+### Add Sample Data
+Click on the "Add Source" button to bring up the "Add Data Source" pop-up window. In this list, under "Object Storage" select the option "Sample Source" which has Gnarly, the Dremio mascot, as its icon.
 
 - Click through to `Samples."samples.dremio.com"`. 
-- Hover over the file and click on the icon on the far right to [format the data to a table](https://docs.dremio.com/current/sonar/data-sources/entity-promotion/).
-- In the Table Settings window, tick the box to `Extract Column Names` and click Save.
+- To [format the data to a table](https://docs.dremio.com/current/sonar/data-sources/entity-promotion/) click on the file `NYC-taxi-trips.csv`.
+- In the Table Settings window that pops up, tick the box to `Extract Column Names` and click Save.
 - In the sample data list the icon for this file will have changed from a grey file to a purple table.
 
 Now that the dataaset is a table you generate an Iceberg table in Nessie. Go to the SQL editor and run the following SQL statement:
