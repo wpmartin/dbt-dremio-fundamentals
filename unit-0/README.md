@@ -6,24 +6,11 @@ As such, make sure you have Docker installed, and if using Docker Desktop you ma
 
 ## Setting up a Minio Data Lake and Nessie Catalog
 
-First, let's spin up our Minio object storage-based data lake and create a bucket to store our Apache Iceberg tables, which Nessie will catalog. We can spin up these services using the provided `docker-compose.yml` and with the command:
+First, let's spin up our services using the provided `docker-compose.yml` and with the command:
 
 ```
-docker compose up -d minio nessie
+docker compose up
 ```
-
-Now head over to `localhost:9001` in your browser and log in to the Minio dashboard with the username "admin" and password "password".
-
-Once you are logged in, create a bucket called `warehouse`, and with that we have everything we need. Feel free to visit this dashboard later on in this tutorial, after we make some Apache Iceberg tables, to see the created files.
-
-## Starting Dremio
-
-Next, it is time to start Dremio and get it connected to our data sources. Let's get Dremio started with the following command:
-
-```
-docker compose up -d dremio
-```
-
 After a minute or two, Dremio should be up and running and we can visit it in the browser at `localhost:9047` where we will have to create our initial user account. You will need to provide:
   - First Name
   - Last Name
@@ -56,9 +43,6 @@ Once you are inside Dremio, we can begin adding our data sources by clicking the
 
     ![alt text](image-74.webp)
     ![alt text](image-76.webp)
-
-### Add Sample Data
-Click on the "Add Source" button to bring up the "Add Data Source" pop-up window. In this list, under "Object Storage" select the option "Sample Source" which has Gnarly, the Dremio mascot, as its icon.
 
 ## Creating a Python Virtual Environment and Installing dbt
 
