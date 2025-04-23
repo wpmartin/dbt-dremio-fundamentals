@@ -89,7 +89,7 @@ Likewise you can also overide the Dremio configuration options you selected when
 ```
 {{ config(
     object_storage_source='nessie',
-    object_storage_path='nyc.silver',
+    object_storage_path='nyc.intermediate',
     dremio_space='default',
     dremio_space_folder='custom_views'
 ) }}
