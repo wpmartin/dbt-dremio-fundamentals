@@ -40,16 +40,11 @@ Click on the "Add Source" button to bring up the "Add Data Source" pop-up window
 
 - Click through to `Samples."samples.dremio.com"`. 
 - To [format the data to a table](https://docs.dremio.com/current/sonar/data-sources/entity-promotion/) click on the file `NYC-taxi-trips.csv`.
-
-  ![alt text](./images/image-2.2.webp)
-
 - In the Table Settings window that pops up, tick the box to `Extract Column Names` and click Save.
 
   ![alt text](./images/image-2.3.webp)
 
 - In the sample data list the icon for this file will have changed from a grey file to a purple table.
-
-  ![alt text](./images/image-2.4.webp)
 
 Now that the dataaset is a table you generate an Iceberg table in the data catalog. Go to the SQL editor and run the following SQL statement:
 
@@ -60,7 +55,7 @@ CREATE TABLE catalog.nyc.raw.trips AS SELECT * FROM Samples."samples.dremio.com"
 
 This code will create a main directory in the data catalog called `nyc` for your project, and within that a sub-directory one called `raw` into which it wrote an Iceberg table, `trips`. Click through into this directory in the Dremio UI to see for yourself.
 
-  ![alt text](./images/image-2.5.webp)
+  <img src=./images/image-2.5.webp width="200">
 
 
 ## Create sub-folders for the models
