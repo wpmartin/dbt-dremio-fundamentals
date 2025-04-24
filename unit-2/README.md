@@ -36,15 +36,27 @@ The data used to create your models will be an Iceberg table stored in the data 
 ### Add Sample Data
 Click on the "Add Source" button to bring up the "Add Data Source" pop-up window. In this list, under "Object Storage" select the option "Sample Source" which has Gnarly, the Dremio mascot, as its icon.
 
-  ![alt text](./images/image-2.1.webp width="100" height="20")
+<p align="left">
+  <img src=./images/image-2.1.webp width="250">
+</p>
 
-- Click through to `Samples."samples.dremio.com"`. 
-- To [format the data to a table](https://docs.dremio.com/current/sonar/data-sources/entity-promotion/) click on the file `NYC-taxi-trips.csv`.
+- Click through to `Samples."samples.dremio.com"` and click on the file `NYC-taxi-trips.csv` to [format the data to a table](https://docs.dremio.com/current/sonar/data-sources/entity-promotion/).
+
+<p align="left">
+  <img src=./images/image-2.2.webp width="250">
+</p>
+
 - In the Table Settings window that pops up, tick the box to `Extract Column Names` and click Save.
 
-  ![alt text](./images/image-2.3.webp)
+<p align="center">
+  <img src=./images/image-2.3.webp>
+</p>
 
-- In the sample data list the icon for this file will have changed from a grey file to a purple table.
+- Back in the sample data list, the icon for this file will now have changed from a grey file to a purple table.
+
+<p align="left">
+  <img src=./images/image-2.4.webp width="250">
+</p>
 
 Now that the dataaset is a table you generate an Iceberg table in the data catalog. Go to the SQL editor and run the following SQL statement:
 
@@ -53,9 +65,9 @@ Now that the dataaset is a table you generate an Iceberg table in the data catal
 CREATE TABLE catalog.nyc.raw.trips AS SELECT * FROM Samples."samples.dremio.com"."NYC-taxi-trips.csv";
 ```
 
-This code will create a main directory in the data catalog called `nyc` for your project, and within that a sub-directory one called `raw` into which it wrote an Iceberg table, `trips`. Click through into this directory in the Dremio UI to see for yourself.
+This code will create a main directory in the data catalog called `nyc` for your project, and within that a sub-directory one called `raw` into which it wrote an Iceberg table, `trips` (displayed as a purple table with the Iceberg icon). Click through into this directory in the Dremio UI to see it for yourself.
 
-<p align="center">
+<p align="left">
   <img src=./images/image-2.5.webp width="400">
 </p>
 
