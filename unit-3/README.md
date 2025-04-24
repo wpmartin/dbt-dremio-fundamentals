@@ -66,7 +66,7 @@ Another method of adding tags to a model is to use the `dbt_project.yml`. Add ta
 
 ```
  marts:
-      +database: nessie
+      +database: catalog
       +schema: nyc.marts
       +materialized: view
       +tags: ['gold']

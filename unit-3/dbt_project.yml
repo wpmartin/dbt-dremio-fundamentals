@@ -34,11 +34,11 @@ models:
     +persist_docs:
       relation: true
     intermediate:
-      +database: nessie
+      +database: catalog
       +schema: nyc.intermediate
       +materialized: view
     marts:
-      +database: nessie
+      +database: catalog
       +schema: nyc.marts
       +materialized: view
       +tags: ['gold']

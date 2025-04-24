@@ -2,7 +2,7 @@ services:
   # Nessie Catalog Server Using In-Memory Store
   nessie:
     image: projectnessie/nessie:latest
-    container_name: nessie
+    container_name: catalog
     networks:
       dremio-university:
     ports:

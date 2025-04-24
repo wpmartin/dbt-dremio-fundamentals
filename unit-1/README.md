@@ -23,9 +23,9 @@ With all the packages and libraries installed, now we can create a new dbt proje
 - `object_storage_source`: must be a Dremio source where tables can be written (S3, GCP, HDFS, AWS Glue, Polaris, Nessie).
 - `object_storage_path`: the sub path for your object_storage_source
 
-These two settings establish where physical tables are created by default, in our case we want to create tables by default in `nessie.nyc.raw` so the values will be:
+These two settings establish where physical tables are created by default, in our case we want to create tables by default in `catalog.nyc.raw` so the values will be:
 
-8. **object_storage_source**: `nessie`
+8. **object_storage_source**: `catalog`
 9. **object_storage_path**: `nyc.raw`
 
 ###### Creating Views Location
@@ -33,9 +33,9 @@ These two settings establish where physical tables are created by default, in ou
 - `dremio_space`: This can be any Dremio Source that can track views (Spaces, Arctic Catalog, Nessie, Dremio Catalog).
 - `dremio_space_folder`: This the sub path for the dremio_space
 
-We want to be using Nessie and the `raw` directory, so our values will be:
+We want to be using our data catalog and the `raw` directory, so our values will be:
 
-10. **dremio_space**: `nessie`
+10. **dremio_space**: `catalog`
 11. **dremio_space_folder**: `nyc.raw`
 
 #### 13: Thread
@@ -60,11 +60,11 @@ Open `dbt_project.yml` and edit the `models:nyc` section to as follows:
 models:
   nyc:
     intermediate:
-      +database: nessie
+      +database: catalog
       +schema: nyc.intermediate
       +materialized: view
     marts:
-      +database: nessie
+      +database: catalog
       +schema: nyc.marts
       +materialized: view
 ```
@@ -88,7 +88,7 @@ Likewise you can also overide the Dremio configuration options you selected when
 
 ```
 {{ config(
-    object_storage_source='nessie',
+    object_storage_source='catalog',
     object_storage_path='nyc.intermediate',
     dremio_space='default',
     dremio_space_folder='custom_views'

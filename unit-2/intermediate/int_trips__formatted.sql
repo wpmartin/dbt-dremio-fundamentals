@@ -15,6 +15,6 @@ FROM   (SELECT
             CONVERT_TO_FLOAT(trips."fare_amount", 1, 1, 0) AS fare_amount,
             CONVERT_TO_FLOAT(trips."tip_amount", 1, 1, 0) AS tip_amount,
             CONVERT_TO_FLOAT(trips."total_amount", 1, 1, 0) AS total_amount
-        FROM  nessie.nyc.raw.trips  AS trips
+        FROM  catalog.nyc.raw.trips  AS trips
 
 ) nested_0;

@@ -31,7 +31,7 @@ Throughout this tutorial we will use a few select dbt commands. Below are detail
 
 ## Create a raw source dataset in Dremio
 
-The data used to create your models will be an Iceberg table stored in nessie. To create this you will be using the sample dataset `NYC-taxi-trips.csv` provided in Dremio. 
+The data used to create your models will be an Iceberg table stored in the data catalog. To create this you will be using the sample dataset `NYC-taxi-trips.csv` provided in Dremio. 
 
 ### Add Sample Data
 Click on the "Add Source" button to bring up the "Add Data Source" pop-up window. In this list, under "Object Storage" select the option "Sample Source" which has Gnarly, the Dremio mascot, as its icon.
@@ -41,14 +41,14 @@ Click on the "Add Source" button to bring up the "Add Data Source" pop-up window
 - In the Table Settings window that pops up, tick the box to `Extract Column Names` and click Save.
 - In the sample data list the icon for this file will have changed from a grey file to a purple table.
 
-Now that the dataaset is a table you generate an Iceberg table in Nessie. Go to the SQL editor and run the following SQL statement:
+Now that the dataaset is a table you generate an Iceberg table in the data catalog. Go to the SQL editor and run the following SQL statement:
 
 ```
 -- Turning the CSV file into an Apache Iceberg table using CTAS
-CREATE TABLE nessie.nyc.raw.trips AS SELECT * FROM Samples."samples.dremio.com"."NYC-taxi-trips.csv";
+CREATE TABLE catalog.nyc.raw.trips AS SELECT * FROM Samples."samples.dremio.com"."NYC-taxi-trips.csv";
 ```
 
-This code will create a main directory in Nessie called `nyc` for your project, and within that a sub-directory one called `raw` into which it wrote an Iceberg table, `trips`. Click through into this directory in the Dremio UI to see for yourself.
+This code will create a main directory in the data catalog called `nyc` for your project, and within that a sub-directory one called `raw` into which it wrote an Iceberg table, `trips`. Click through into this directory in the Dremio UI to see for yourself.
 
 
 ## Create sub-folders for the models
@@ -64,10 +64,10 @@ At this point I also recommend to delete the `example` directory. This was auto-
 ## Create an intermediate model
 
 - Create an .sql file called `int_trips__formatted.sql` within the `models.intermediate` directory. 
-- This will take the raw data from `nessie.nyc.raw.trips` and rename and reformat the attributes.
+- This will take the raw data from `catalog.nyc.raw.trips` and rename and reformat the attributes.
 - Use the command `dbt run` to create the view in Dremio.
-- Navigate to `nessie.nyc.intermediate` in the Dremio UI to view the created view.
-- Use the Dremio UI to compare this view with the raw table in `nessie.nyc.raw`.
+- Navigate to `catalog.nyc.intermediate` in the Dremio UI to view the created view.
+- Use the Dremio UI to compare this view with the raw table in `catalog.nyc.raw`.
 
 ## Create a marts model
 
@@ -75,4 +75,4 @@ At this point I also recommend to delete the `example` directory. This was auto-
 - This will use the intermediate view `int_trips__formatted` as a source and drop unwanted coloumns.
 - Rather than pull data from Dremio this model uses the `ref()` function to [reference](https://docs.getdbt.com/reference/dbt-jinja-functions/ref) the intermediate model. 
 - Use `dbt run` to create the view in Dremio.
-- Navigate to `nessie.nyc.marts` to view the created view.
+- Navigate to `catalog.nyc.marts` to view the created view.

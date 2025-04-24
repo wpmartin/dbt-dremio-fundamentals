@@ -25,21 +25,21 @@ Your Username and Password will be used later to connect Dremio to dbt, so pleas
 ## Connecting Our Data Sources to Dremio
 Once you are inside Dremio, we can begin adding our data sources by clicking the "Add Source" button in the bottom left corner.
 
-### Add Our Nessie Source
+### Add Our Data Catalog Source
   - Select Nessie from "Add Source"
   - On the General Tab
-    - name: nessie
-    - URL: http://nessie:19120/api/v2
-    - auth: none
+    - name: `catalog`
+    - URL: `http://nessie:19120/api/v2`
+    - Nessie authentication type: `None`
   - On the Storage tab:
-    - root path: warehouse
-    - access key: admin
-    - secret key: password
+    - root path: `warehouse`
+    - access key: `admin`
+    - secret key: `password`
     - connection properties:
-      - fs.s3a.path.style.access : true
-      - fs.s3a.endpoint : minio:9000
-      - dremio.s3.compat : true
-    - Encrypt Connection: false
+      - `fs.s3a.path.style.access` : `true`
+      - `fs.s3a.endpoint` : `minio:9000`
+      - `dremio.s3.compat` : `true`
+    - Encrypt Connection: `false`
 
     ![alt text](image-74.webp)
     ![alt text](image-76.webp)

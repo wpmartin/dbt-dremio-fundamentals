@@ -32,10 +32,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   nyc:
     intermediate:
-      +database: nessie
+      +database: catalog
       +schema: nyc.intermediate
       +materialized: view
     marts:
-      +database: nessie
+      +database: catalog
       +schema: nyc.marts
       +materialized: view
