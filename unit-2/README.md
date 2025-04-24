@@ -55,8 +55,9 @@ CREATE TABLE catalog.nyc.raw.trips AS SELECT * FROM Samples."samples.dremio.com"
 
 This code will create a main directory in the data catalog called `nyc` for your project, and within that a sub-directory one called `raw` into which it wrote an Iceberg table, `trips`. Click through into this directory in the Dremio UI to see for yourself.
 
-  <img src=./images/image-2.5.webp width="200">
-
+<p align="center">
+  <img src=./images/image-2.5.webp width="400">
+</p>
 
 ## Create sub-folders for the models
 
