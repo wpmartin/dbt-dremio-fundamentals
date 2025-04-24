@@ -36,7 +36,7 @@ The data used to create your models will be an Iceberg table stored in the data 
 ### Add Sample Data
 Click on the "Add Source" button to bring up the "Add Data Source" pop-up window. In this list, under "Object Storage" select the option "Sample Source" which has Gnarly, the Dremio mascot, as its icon.
 
-  ![alt text](./images/image-2.1.webp =100x20)
+  ![alt text](./images/image-2.1.webp width="100" height="20")
 
 - Click through to `Samples."samples.dremio.com"`. 
 - To [format the data to a table](https://docs.dremio.com/current/sonar/data-sources/entity-promotion/) click on the file `NYC-taxi-trips.csv`.
