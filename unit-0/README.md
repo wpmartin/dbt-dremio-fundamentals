@@ -18,7 +18,7 @@ After a minute or two, Dremio should be up and running and we can visit it in th
   - Email
   - Password
 
-  ![alt text](image-73.webp)
+  ![alt text](./images/image-0.1.webp)
 
 Your Username and Password will be used later to connect Dremio to dbt, so please remember them.
 
@@ -41,8 +41,8 @@ Once you are inside Dremio, we can begin adding our data sources by clicking the
       - `dremio.s3.compat` : `true`
     - Encrypt Connection: `false`
 
-    ![alt text](image-74.webp)
-    ![alt text](image-76.webp)
+    ![alt text](./images/image-0.2.webp)
+    ![alt text](./images/image-0.3.webp)
 
 ## Creating a Python Virtual Environment and Installing dbt
 
