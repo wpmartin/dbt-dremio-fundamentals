@@ -1,13 +1,13 @@
 # Creating your dbt Project
 
-With all the packages and libraries installed, now we can create a new dbt project using the command `dbt init nyc`, this will be begin a series of questions to setup the global configurations of a project called `nyc`, whose configurations are stored in `~/.dbt/profiles.yml`.
+With all the packages and libraries installed, now we can create a new dbt project using the command `dbt init`, this will be begin a series of questions to setup the global configurations of a project that we want to call `nyc`, whose configurations are stored in `~/.dbt/profiles.yml`.
 
 ### `dbt init` prompts
 
 #### Basics
-1. *number of type of project*: enter the number for `dremio` (may not be 1 if you have other dbt libraries installed)
-2. *type of dremio project*: For this exercise choose `2` (The Following questions will differ depending on what you select for this option)
-    - [2] software_with_username_password (if you are self-deploying Dremio like using Docker and want to authenticate using Username/Password)
+1. **name of your project**: enter `nyc`
+1. **number of type of project**: enter the number for `dremio` (may not be 1 if you have other dbt libraries installed)
+2. **type of dremio project**: For this exercise choose `2` for `software_with_username_password`
 
 #### Connection Settings and Authentication
 3. **software host**: The host part of the url for your Dremio instance, as you are running on your laptop this would be `localhost` or `127.0.0.1`
@@ -76,7 +76,7 @@ With Dremio integration we define our models as either **table** or **view**, an
 
 ### Configuring Settings for an Individual Model
 
-To set custom configurations settings for a specific model you can use the `config()` function within the model file. This will override the model-group configuration specificied in the `dbt_project.yml` file.
+To set custom configurations settings for a specific model you can use the `config()` function within the model file. This will override the model-group configuration specified in the `dbt_project.yml` file.
 
 To override the materialization method to `table` put the following at the top of a model file, above the SELECT statement:
 
