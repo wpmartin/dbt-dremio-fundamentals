@@ -5,8 +5,8 @@ With all the packages and libraries installed, now we can create a new dbt proje
 ### `dbt init` prompts
 
 #### Basics
-1. **name of your project**: enter `nyc`
-1. **number of type of project**: enter the number for `dremio` (may not be 1 if you have other dbt libraries installed)
+1. **name of your project**: Enter `nyc`
+1. **number of type of project**: Enter the number for `dremio` (may not be 1 if you have other dbt libraries installed)
 2. **type of dremio project**: For this exercise choose `2` for `software_with_username_password`
 
 #### Connection Settings and Authentication
