@@ -96,3 +96,7 @@ At this point I also recommend to delete the `example` directory. This was auto-
 - Rather than pull data from Dremio this model uses the `ref()` function to [reference](https://docs.getdbt.com/reference/dbt-jinja-functions/ref) the intermediate model. 
 - Use `dbt run` to create the view in Dremio.
 - Navigate to `catalog.nyc.marts` to view the created view.
+
+## EXTRA CREDIT
+
+Try adding in a `staging` layer data model, which produces a 1-to-1 copy of the source dataset materialized as a table. Remember to refactor the intermediate model to reference this new staging model.
