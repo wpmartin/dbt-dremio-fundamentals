@@ -58,7 +58,7 @@ Click on the "Add Source" button to bring up the "Add Data Source" pop-up window
   <img src=./images/image-2.4.webp width="250">
 </p>
 
-Now that the dataaset is a table you generate an Iceberg table in the data catalog. Go to the SQL editor and run the following SQL statement:
+Now that the dataset is a table you generate an Iceberg table in the data catalog. Go to the SQL editor and run the following SQL statement:
 
 ```
 -- Turning the CSV file into an Apache Iceberg table using CTAS
