@@ -10,11 +10,10 @@ SELECT
 FROM   (SELECT 
             CASE WHEN LENGTH(SUBSTR(trips."pickup_datetime", 12, LENGTH(trips."pickup_datetime") - 15)) > 0 THEN SUBSTR(trips."pickup_datetime", 12, LENGTH(trips."pickup_datetime") - 15) ELSE NULL END AS pickup_time,
             CASE WHEN LENGTH(SUBSTR(trips."pickup_datetime", 1, 10)) > 0 THEN SUBSTR(trips."pickup_datetime", 1, 10) ELSE NULL END AS pickup_date,
-            CONVERT_TO_INTEGER(trips."passenger_count", 1, 0, 0) AS passenger_count,
-            CONVERT_TO_FLOAT(trips."trip_distance_mi", 1, 1, 0) AS trip_distance,
-            CONVERT_TO_FLOAT(trips."fare_amount", 1, 1, 0) AS fare_amount,
-            CONVERT_TO_FLOAT(trips."tip_amount", 1, 1, 0) AS tip_amount,
-            CONVERT_TO_FLOAT(trips."total_amount", 1, 1, 0) AS total_amount
+            CAST(nyc_trips."passenger_count" AS INTEGER) AS passenger_count,
+            CAST(nyc_trips."trip_distance_mi" AS FLOAT) AS trip_distance,
+            CAST(nyc_trips."fare_amount" AS FLOAT) AS fare_amount,
+            CAST(nyc_trips."tip_amount" AS FLOAT) AS tip_amount,
+            CAST(nyc_trips."total_amount" AS FLOAT) AS total_amount
         FROM  catalog.nyc.raw.trips  AS trips
-
 ) nested_0;
