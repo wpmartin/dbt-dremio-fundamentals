@@ -3,5 +3,5 @@ version: 2
 data_tests:
   - name: assert_has_passengers
     description: >
-      The taxi must have passengers to pay the fare.
+      The taxi cannot carry negative passengers.
       Return records where passenger_count < 0 to make the test fail.
